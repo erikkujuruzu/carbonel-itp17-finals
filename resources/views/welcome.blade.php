@@ -12,7 +12,6 @@
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center">
     <div class="flex flex-col items-center justify-center w-full max-w-md mx-auto p-8 bg-white rounded-lg shadow mt-12">
-        <span style="font-size:3rem;">📅</span>
         <h1 class="text-2xl font-bold mt-4 mb-2">Welcome to your Booking</h1>
         <p class="text-gray-600 mb-6 text-center">Please log in or register to get started.</p>
         <div class="flex gap-4 mb-4">
