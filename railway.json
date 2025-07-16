@@ -1,0 +1,13 @@
+{
+  "build": {
+    "builder": "nixpacks",
+    "config": {
+      "NIXPACKS_PHP_VERSION": "8.2",
+      "NIXPACKS_COMPOSER_ARGS": "--ignore-platform-reqs"
+    },
+    "postBuildCommand": "php artisan optimize:clear && chmod -R 755 storage database"
+  },
+  "deploy": {
+    "startCommand": "php artisan serve --host=0.0.0.0 --port=${PORT}"
+  }
+}
