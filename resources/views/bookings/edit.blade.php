@@ -1,44 +1,47 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Edit Booking</h2>
-            <a href="{{ route('dashboard') }}" class="btn-secondary" style="display:inline-block;padding:0.5rem 1.25rem;border-radius:0.375rem;background:#fff;color:#2563eb;font-weight:500;font-size:1rem;border:1px solid #2563eb;text-decoration:none;transition:background 0.15s;">Back to Dashboard</a>
+        <div class="flex items-center justify-between" style="color: #f3f4f6;">
+            <h2 class="font-semibold text-xl leading-tight">Edit Booking</h2>
+            <a href="{{ route('dashboard') }}" style="display:inline-block;padding:0.5rem 1.25rem;border-radius:0.375rem;background:#111827;color:#60a5fa;font-weight:500;font-size:1rem;border:1px solid #60a5fa;text-decoration:none;transition:background 0.15s;">Back to Dashboard</a>
         </div>
     </x-slot>
-    <div class="p-6">
+    <div class="p-6" style="background-color:#111827; min-height: 100vh;">
         <div class="max-w-md mx-auto">
-            <div class="card p-6">
+            <div class="card p-6" style="background-color:#1f2937; border:1px solid #374151; border-radius:0.5rem;">
                 <form method="POST" action="{{ route('bookings.update', $booking) }}" class="space-y-6">
                     @csrf
                     @method('PUT')
+
                     <!-- Calendar Section -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Booking Date</label>
-                        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+                        <label class="block text-sm font-medium mb-2" style="color:#f3f4f6;">Booking Date</label>
+                        <div style="background:#374151; padding:1rem; border-radius:0.375rem; border:1px solid #4b5563;">
                             <div class="flex items-center justify-between mb-2">
-                                <button type="button" id="prevMonth" style="padding:0.25rem 0.75rem;border-radius:0.375rem;background:#f3f4f6;color:#2563eb;font-weight:500;border:1px solid #e5e7eb;">&lt;</button>
-                                <span id="calendarMonth" style="font-weight:600;font-size:1rem;"></span>
-                                <button type="button" id="nextMonth" style="padding:0.25rem 0.75rem;border-radius:0.375rem;background:#f3f4f6;color:#2563eb;font-weight:500;border:1px solid #e5e7eb;">&gt;</button>
+                                <button type="button" id="prevMonth" style="padding:0.25rem 0.75rem;border-radius:0.375rem;background:#1f2937;color:#60a5fa;font-weight:500;border:1px solid #4b5563;">&lt;</button>
+                                <span id="calendarMonth" style="font-weight:600;font-size:1rem;color:#f3f4f6;"></span>
+                                <button type="button" id="nextMonth" style="padding:0.25rem 0.75rem;border-radius:0.375rem;background:#1f2937;color:#60a5fa;font-weight:500;border:1px solid #4b5563;">&gt;</button>
                             </div>
                             <div id="calendar" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem;"></div>
                         </div>
                         <input type="hidden" name="date" id="selected_date" value="{{ $booking->date }}" required>
                         @error('date')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-2 text-sm" style="color:#f87171;">{{ $message }}</p>
                         @enderror
                     </div>
+
                     <!-- Note Section -->
                     <div>
-                        <label for="note" class="block text-sm font-medium text-gray-700 mb-2">Note (Optional)</label>
-                        <textarea id="note" name="note" rows="3" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-sm" placeholder="Add any additional notes...">{{ old('note', $booking->note) }}</textarea>
+                        <label for="note" class="block text-sm font-medium mb-2" style="color:#f3f4f6;">Note (Optional)</label>
+                        <textarea id="note" name="note" rows="3" class="block w-full rounded-md shadow-sm text-sm" style="background-color:#1f2937; color:#f3f4f6; border:1px solid #4b5563;" placeholder="Add any additional notes...">{{ old('note', $booking->note) }}</textarea>
                         @error('note')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-2 text-sm" style="color:#f87171;">{{ $message }}</p>
                         @enderror
                     </div>
+
                     <!-- Submit Buttons -->
-                    <div class="flex items-center justify-end space-x-3 pt-6 border-t border-gray-100">
-                        <a href="{{ route('dashboard') }}" class="btn-secondary" style="display:inline-block;padding:0.5rem 1.25rem;border-radius:0.375rem;background:#fff;color:#2563eb;font-weight:500;font-size:1rem;border:1px solid #2563eb;text-decoration:none;transition:background 0.15s;">Cancel</a>
-                        <button type="submit" class="btn-primary" style="display:inline-block;padding:0.5rem 1.25rem;border-radius:0.375rem;background:#2563eb;color:#fff;font-weight:500;font-size:1rem;text-decoration:none;transition:background 0.15s;">Update Booking</button>
+                    <div class="flex items-center justify-end space-x-3 pt-6 border-t" style="border-color:#374151;">
+                        <a href="{{ route('dashboard') }}" style="display:inline-block;padding:0.5rem 1.25rem;border-radius:0.375rem;background:#1f2937;color:#60a5fa;font-weight:500;font-size:1rem;border:1px solid #60a5fa;text-decoration:none;transition:background 0.15s;">Cancel</a>
+                        <button type="submit" style="display:inline-block;padding:0.5rem 1.25rem;border-radius:0.375rem;background:#2563eb;color:#fff;font-weight:500;font-size:1rem;text-decoration:none;transition:background 0.15s;">Update Booking</button>
                     </div>
                 </form>
             </div>
